@@ -1,19 +1,27 @@
-function valueCheck(num, binary) {
-  if (num === 0) {
-    return binary;
-  }
-}
-
 function deciBin(num) {
-  let binary = "";
+  let binary = [];
   while (num >= 1) {
-    remainder = num % 2;
+    let remainder = num % 2;
     num = num / 2;
-    if ((remainder = 1)) {
-      binary += 1;
+    num = Math.floor(num);
+    if (remainder === 1) {
+      binary.push(1);
     } else {
-      binary += 0;
+      binary.push(0);
     }
   }
-  return binary.toString().reverse();
+  return binary.reverse().join("");
 }
+
+function binDeci(binary) {
+  let decimal = 0;
+  for (i = 0; i < binary.length; i++) {
+    if (binary[binary.length - i - 1] === "1") {
+      decimal += Math.pow(2, i);
+    }
+  }
+  return decimal;
+}
+
+console.log(binDeci("101101"));
+console.log(deciBin(9));
